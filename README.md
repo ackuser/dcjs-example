@@ -24,3 +24,15 @@ See it in a [gist] and in [bl.ocks] & [raw bl.ocks] for better visualization
   [dcjs-presentation-1]: <https://ackuser.github.io/dcjs-presentation-1>
 
   [dcjs-presentation-2]: <https://ackuser.github.io/dcjs-presentation-2>
+
+
+
+ iconv -f "windows-1252" -t "UTF-8" contratos-spain.csv -o contratos-spain-norm.csv
+
+  dos2unix contratos-spain-norm.csv
+
+  awk '{print $0","}' contratos-spain-norm.csv  > contratos-spain-norm.csv
+
+ sed -i 's/Navarra/Comunidad Foral de Navarra/g' contratos.csv
+
+ awk -F'\t' {'print $7'} spain-provinces-population.tsv | sort | uniq
