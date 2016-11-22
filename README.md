@@ -1,38 +1,42 @@
-# dcjs-example
-An example for an overview of dcjs
+### dcjs-example
 
-    [dcjs-presentation-1]
+###### dcjs overview
 
-    [dcjs-presentation-2]
+* [dcjs-presentation-1]
+* [dcjs-presentation-2]
 
-Information from [Wikipedia]
+##### Datasets Information from [Wikipedia] & [datos.gob.es]
 
-See it in a [gist] and in [bl.ocks] & [raw bl.ocks] for better visualization
+### See it in [bl.ocks] for better visualization
 
   [bl.ocks]:
-  <http://bl.ocks.org/ackuser/53e66ddba701e7bc99c396f0640639d5>
+  <http://bl.ocks.org/ackuser/0ac0f61324118dbaa896baafe86ebfac>
 
-  [raw bl.ocks]:
-  <http://bl.ocks.org/ackuser/raw/53e66ddba701e7bc99c396f0640639d5>
+  [dcjs-presentation-1]:
+  <https://ackuser.github.io/dcjs-presentation-1>
 
-  [gist]:
-  <https://gist.github.com/ackuser/53e66ddba701e7bc99c396f0640639d5>
+  [dcjs-presentation-2]:
+  <https://ackuser.github.io/dcjs-presentation-2>
 
+  [datos.gob.es]: <http://datos.gob.es/catalogo/contratos-municipios>
 
   [Wikipedia]: <https://es.wikipedia.org/w/index.php?title=Anexo:Provincias_y_ciudades_aut%C3%B3nomas_de_Espa%C3%B1a>
 
-  [dcjs-presentation-1]: <https://ackuser.github.io/dcjs-presentation-1>
-
-  [dcjs-presentation-2]: <https://ackuser.github.io/dcjs-presentation-2>
+### Commands help
 
 
-
+```
  iconv -f "windows-1252" -t "UTF-8" contratos-spain.csv -o contratos-spain-norm.csv
-
-  dos2unix contratos-spain-norm.csv
-
-  awk '{print $0","}' contratos-spain-norm.csv  > contratos-spain-norm.csv
-
+```
+```
+ dos2unix contratos-spain-norm.csv
+```
+```
+ awk '{print $0","}' contratos-spain-norm.csv  > contratos-spain-norm.csv
+```
+```
  sed -i 's/Navarra/Comunidad Foral de Navarra/g' contratos.csv
-
+```
+```
  awk -F'\t' {'print $7'} spain-provinces-population.tsv | sort | uniq
+```

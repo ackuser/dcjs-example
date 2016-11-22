@@ -31,13 +31,13 @@ d3.csv("contratos.csv", function (csv) {
     var employmentByTime = timeDim.group().reduceSum(function(d) { return +d.contratos })
 
     var projection = d3.geo.mercator()
-    .center([3, 30])
-    .scale(1100)
+    .center([-6, 37])
+    .scale(2200)
     .translate([400, 400])
 
     d3.json("units1.json", function (statesJson) {
         spainChart
-        .width(500)
+        .width(1000)
         .height(500)
         .dimension(states_bis)
         .group(employmentByState)
@@ -61,7 +61,7 @@ d3.csv("contratos.csv", function (csv) {
         .height(500)
         .transitionDuration(500)
         .colorAccessor(function(d, i){return d.value;})
-        .radius(90)
+        .radius(140)
         .innerRadius(40)
         .dimension(states)
         .group(empPermanentByWomen)
@@ -73,7 +73,7 @@ d3.csv("contratos.csv", function (csv) {
         .height(500)
         .transitionDuration(500)
         .colorAccessor(function(d, i){return d.value;})
-        .radius(90)
+        .radius(140)
         .innerRadius(40)
         .dimension(states)
         .group(empPermanentByMen)
@@ -81,8 +81,8 @@ d3.csv("contratos.csv", function (csv) {
         .renderTitle(true);
 
         timeChart
-        .width(800)
-        .height(180)
+        .width(1000)
+        .height(300)
         .dimension(timeDim)
         .margins({top: 40, right: 20, bottom: 20, left: 50})
         .group(employmentByTime)
@@ -99,7 +99,7 @@ d3.csv("contratos.csv", function (csv) {
 
         ordinalChart
         .width(1000)
-        .height(400)
+        .height(500)
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .brushOn(true)
@@ -131,7 +131,10 @@ d3.csv("contratos.csv", function (csv) {
             function(d) { return d.comunidad },
             function(d) { return d.provincia },
             function(d) { return d.municipio },
-            function(d) { return d.cod_mes },
+            function(d) { return d.mes.substring(4, d.mes.length) },
+            function(d) { return d.contratos },
+            function(d) { return d.indef_hombres },
+            function(d) { return d.indef_mujeres }
         ])
         .on('renderlet', function (table) {
             table.selectAll('.dc-table-group').classed('info', true);
